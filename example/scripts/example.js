@@ -2700,8 +2700,8 @@ var navigationHeader = require('../../../index'),
 	webapp = require('./webapp');
 
 var module1 = webapp,
-	fullWidthSlideshow1 = false,
-	fullWidthSlideshow2 = false;
+	navigationHeader1 = false,
+	navigationHeader2 = false;
 
 window.onload = function(){
 	async.parallel({
@@ -2717,9 +2717,12 @@ window.onload = function(){
 			console.log(err);
 		}
 
-		console.log("results",results);
+		// console.log("results",results);
+		var data = results.componentData;
 		webapp.render( results.template, results.componentData, "header-container");
-		// fullWidthSlideshow1 = new fullWidthSlideshow({element:"p_c_lvs-id"});
+		navigationHeader1 = new navigationHeader();
+		navigationHeader1.init({element:data.config.html.dom_id});
+		window.navigationHeader1 = navigationHeader1;
 
 		// var data2 = results.componentData;
 		// data2.config.html.dom_id="p_c_lvs-id2";
@@ -2827,6 +2830,11 @@ var Modernizr = require('browsernizr'),
 	events = require('events'),
 	util = require('util');
 
+var getEventTarget = function(e) {
+    e = e || window.event;
+    return e.target || e.srcElement;
+};
+
 var navigationHeader = function(){
 	this.navStyles=["ha-header-large","ha-header-small","ha-header-hide","ha-header-show","ha-header-subshow","ha-header-shrink","ha-header-rotate","ha-header-rotateBack","ha-header-color","ha-header-box","ha-header-fullscreen","ha-header-subfullscreen"];
 		this.emit("navigationInitialized");
@@ -2841,16 +2849,20 @@ var navigationHeader = function(){
 		10:11
 	};
 
-	return {
-		navStyles: this.navStyles,
-		subNavStyles: this.subNavStyles,
-		init:this._init,
-		getOptions: this.getOptions,
-		showNav: this._showNav,
-		showSubNav: this._showSubNav,
-		hideSubNav: this._hideSubNav
+	this.init = function(options){
+		return this._init(options);
+	};
+	this.showNav = function(style){
+		return this._showNav(style);
+	};
+	this.showSubNav = function(subnavToShow){
+		return this._showSubNav(subnavToShow);
+	};
+	this.hideSubNav = function(){
+		return this._hideSubNav();
 	};
 };
+
 util.inherits(navigationHeader,events.EventEmitter);
 
 navigationHeader.prototype.render = function(template,data,element){
@@ -2868,9 +2880,9 @@ navigationHeader.prototype._init = function( options ) {
 	this.options = extend( defaults,options );
 	this.$el = document.getElementById(this.options.element);
 	// this._config();
-	// this._initEvents();
-	console.log("this",this);
-	// this.emit("navigationInitialized");
+	this._initEvents();
+	// console.log("this",this);
+	this.emit("navigationInitialized");
 };
 navigationHeader.prototype.getOptions = function(){
 	return this.options;
@@ -2883,6 +2895,25 @@ navigationHeader.prototype._config = function() {
 	this.old = 0;
 };
 navigationHeader.prototype._initEvents = function() {
+	var self = this,
+		openSubNav = function(event){
+			// console.log("moving on nav");
+			var target = getEventTarget(event);
+			if(classie.hasClass(target,"has-sub-nav")){
+				self.showSubNav(target.getAttribute("data-navitr"));
+				// console.log("moving on subnav",target.getAttribute("data-navitr"));
+				self.$navbar.removeEventListener("mousemove",openSubNav);
+			}
+		};
+	this.$navbar = document.getElementById(this.options.element+"-nav-id");
+	this.$subnavbar = document.getElementById(this.options.element+"-subnav-id");
+	// console.log("this.$navbar",this.$navbar);
+	this.$navbar.addEventListener("mousemove",openSubNav);
+
+	this.$subnavbar.addEventListener("mouseleave",function(event){
+		self.hideSubNav();
+		self.$navbar.addEventListener("mousemove",openSubNav);
+	});
 };
 navigationHeader.prototype._showNav = function( style ) {
 	if(typeof style ==="number"){
@@ -2890,8 +2921,16 @@ navigationHeader.prototype._showNav = function( style ) {
 		this.options.navStyle = style;
 	}
 };
-navigationHeader.prototype._showSubNav = function() {
-	console.log(this.subNavStyles);
+navigationHeader.prototype._showSubNav = function(subnavToShow) {
+	var subNavItems = this.$subnavbar.getElementsByTagName("nav");
+	for(var x in subNavItems){
+		if(subNavItems[x].style){
+			subNavItems[x].style.display = "none";
+			if(subNavItems[x].getAttribute("data-itr")===subnavToShow){
+				subNavItems[x].style.display = "block";
+			}
+		}
+	}
 	var subnavid = this.subNavStyles[this.options.navStyle.toString()];
 	this.$el.setAttribute("class", "ha-header "+this.navStyles[subnavid]);
 	this.options.subNavStyle = subnavid;

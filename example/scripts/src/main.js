@@ -5,8 +5,8 @@ var navigationHeader = require('../../../index'),
 	webapp = require('./webapp');
 
 var module1 = webapp,
-	fullWidthSlideshow1 = false,
-	fullWidthSlideshow2 = false;
+	navigationHeader1 = false,
+	navigationHeader2 = false;
 
 window.onload = function(){
 	async.parallel({
@@ -22,9 +22,12 @@ window.onload = function(){
 			console.log(err);
 		}
 
-		console.log("results",results);
+		// console.log("results",results);
+		var data = results.componentData;
 		webapp.render( results.template, results.componentData, "header-container");
-		// fullWidthSlideshow1 = new fullWidthSlideshow({element:"p_c_lvs-id"});
+		navigationHeader1 = new navigationHeader();
+		navigationHeader1.init({element:data.config.html.dom_id});
+		window.navigationHeader1 = navigationHeader1;
 
 		// var data2 = results.componentData;
 		// data2.config.html.dom_id="p_c_lvs-id2";

@@ -1,17 +1,19 @@
-<% 
-var startheader = (config.html.dom_init_class) ? config.html.dom_init_class : "ha-header-show" ;
-var subnavhtml='';
+<% var startheader = (config.html.dom_init_class) ? config.html.dom_init_class : "ha-header-show" ;
+	var subnavhtml='';
 
 function generateLinkHtml(obj,x,recrusive){
 	var returnHtml='';
+	var hasSubNav = (obj.nav)? "has-sub-nav":"";
 	if(obj.navtype==="link"){
-		returnHtml+="<a href='"+obj.navurl+"'>"+obj.navlabel+"</a>";
+		returnHtml+="<a href='"+obj.navurl+"' data-navitr='"+x+"' class='"+hasSubNav+"' >"+obj.navlabel+"</a>";
 	}
 	else if(obj.navtype==="html"){
 		returnHtml+=obj.navhtml;
 	}
-	if(obj.nav && recrusive){
+	
+	if(obj.nav && recrusive ===true){
 		generateSubLinkHtml(obj.nav,x);
+
 	}
 	return returnHtml;
 }
@@ -36,7 +38,7 @@ function generateSubLinkHtml(obj,x){
 				<% var headerhtml = generateLinkHtml(content.heading); %>
 				<%- headerhtml %>
 			</h1>
-			<nav>
+			<nav id="<%= config.html.dom_id %>-nav-id">
 				<% for(x in content.nav){
 					var navobjlink = generateLinkHtml(content.nav[x],x,true);
 					%>
@@ -45,7 +47,7 @@ function generateSubLinkHtml(obj,x){
 				}%>
 			</nav>
 		</div>
-		<div class="ha-header-bottom">
+		<div id="<%= config.html.dom_id %>-subnav-id" class="ha-header-bottom">
 			<%- subnavhtml %>
 		</div>
 	</div>
