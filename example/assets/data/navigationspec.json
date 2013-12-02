@@ -1,0 +1,78 @@
+{
+	"config":{
+		"html":{
+			"dom_init_class":"ha-header-rotateBack",
+			"dom_id":"ha-header"
+		}
+	},
+	"content":{
+		"heading":{
+			"navtype":"link",
+			"navlabel":"Travel + Leisure",
+			"navurl":"http://travelandleisure.com"
+		},
+		"nav":[{
+			"navtype":"link",
+			"navlabel":"guides",
+			"navurl":"/travel-guide",
+			"nav":[{
+				"navtype":"link",
+				"navlabel":"US + Canada",
+				"navurl":"/travel-guide/us-canada"
+			},{
+				"navtype":"link",
+				"navlabel":"Europe",
+				"navurl":"/travel-guide/espn"
+			},{
+				"navtype":"link",
+				"navlabel":"Caribbean",
+				"navurl":"/travel-guide/caribbean"
+			},{
+				"navtype":"link",
+				"navlabel":"Asia",
+				"navurl":"/travel-guide/asia"
+			}]
+		},{
+			"navtype":"link",
+			"navlabel":"cruises",
+			"navurl":"/cruises",	
+		},{
+			"navtype":"link",
+			"navlabel":"news",
+			"navurl":"/news",	
+		},{
+			"navtype":"html",
+			"navlabel":"search",
+			"navhtml":"<form><input type='text'/></form>"	
+		}]
+	}
+}
+
+/*
+<ul class="subnav clear" id="destinations-subnav">
+<li id="destinations-us-canada">
+<a href="/travel-guide/us-canada" title="United States + Canada">United States + Canada</a>
+</li>
+<li id="destinations-europe">
+<a href="/travel-guide/europe" title="Europe">Europe</a>
+</li>
+<li id="destinations-caribbean">
+<a href="/travel-guide/caribbean-bermuda-bahamas" title="Caribbean">Caribbean</a>
+</li>
+<li id="destinations-latin-america">
+<a href="/travel-guide/mexico-central-south-america" title="Latin America">Latin America</a>
+</li>
+<li id="destinations-asia">
+<a href="/travel-guide/asia" title="Asia">Asia</a>
+</li>
+<li id="destinations-australia">
+<a href="/travel-guide/australia-new-zealand-south-pacific" title="Australia + South Pacific">Australia + South Pacific</a>
+</li>
+<li id="destinations-africa">
+<a href="/travel-guide/africa-middle-east" title="Africa + Middle East">Africa + Middle East</a>
+</li>
+<li id="destinations-all">
+<a href="/travel-guide" title="All Destinations">All Destinations</a>
+</li>
+</ul>
+*/

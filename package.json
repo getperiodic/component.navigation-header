@@ -1,15 +1,29 @@
 {
   "name": "component.navigation-header",
-  "description": "gThe header is composed of various effects. It has a perspective wrapper, a front and a bottom (for the 3d rotation)",
+  "description": "The header is composed of various effects. It has a perspective wrapper, a front and a bottom (for the 3d rotation)",
   "version": "0.0.1",
   "main": "index.js",
   "engines": {
     "node": ">=0.10.x"
   },
   "scripts": {
-    "test": "mocha -R spec --recursive"
+    "test": "mocha -R spec --recursive",
+    "install": "grunt copy",
+    "uninstall": "grunt clean",
+    "watch": "grunt watch"
   },
-  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:getperiodic/component.navigation-header.git"
+  },
+  "dependencies": {
+    "classie": "0.0.1",
+    "browsernizr": "~1.0.1",
+    "grunt-contrib-copy": "0.4.1",
+    "grunt-contrib-clean": "~0.5.0",
+    "util-extend": "~1.0.1",
+    "ejs": "~0.8.5"
+  },
   "devDependencies": {
     "chai": "1.5.0",
     "grunt": "0.4.1",
@@ -20,9 +34,9 @@
     "mocha": "1.9.0"
   },
   "keywords": [
-    "Amex Pub",
-    "amexpub",
-    "package",
-    "library"
+    "Periodic Decoupled Framework",
+    "ui",
+    "ux",
+    "dom"
   ]
 }

@@ -1,0 +1,37 @@
+<div id="<%= config.html.dom_id %>" class="<%= config.html.dom_id %> p_c_fws-slideshow <% if(config.html.preview===true){%> p_c_fws-slideshow-preview <%}%>">
+	<% 
+	if(config.html.preview===true){ %>
+		<ul>
+		<% for(x in content){ %>
+			<li id="<%= config.html.dom_id %>-li-<%= x %>" class="p_c_fws-slideshow-li <%= config.html.dom_id %> ">
+				<article>
+					<h2><%=content[x].title%></h2>
+					<figure><%-content[x].media%></figure>
+				</article>
+			</li>
+			<%
+		}%>
+		</ul>
+	<%} 
+	else{ %>
+		<header><%= config.html.dom_title %></header>
+		<ul>
+		<% for(x in content){ %>
+			<li id="<%= config.html.dom_id %>-li-<%= x %>" class="p_c_fws-slideshow-li <%= config.html.dom_id %>">
+				<article>
+					<h2><%=content[x].title%></h2>
+					<figure><%-content[x].media%></figure>
+					<p class="small"><%=content[x].dek%><p>
+					<div class="article-meta">
+						<time><%=content[x].date%></time>
+						<small><%=content[x].author%></small>
+						<small><%=content[x].byline%></small>
+					</div>
+					<section><%-content[x].content%></section>
+				</article>
+			</li>
+			<%
+		}%>
+		</ul>
+	<%}%>
+</div>
