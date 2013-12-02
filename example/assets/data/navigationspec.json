@@ -7,9 +7,9 @@
 	},
 	"content":{
 		"heading":{
-			"navtype":"link",
+			"navtype":"html",
 			"navlabel":"Travel + Leisure",
-			"navurl":"http://travelandleisure.com"
+			"navhtml":"<a href='/'><img src='https://gpsampledata.s3.amazonaws.com/component.navigation-header/tl-lg.png'/></a>"
 		},
 		"nav":[{
 			"navtype":"link",
@@ -35,44 +35,65 @@
 		},{
 			"navtype":"link",
 			"navlabel":"cruises",
-			"navurl":"/cruises",	
+			"navurl":"/cruises"	
+		},{
+			"navtype":"link",
+			"navlabel":"ideas",
+			"navurl":"/vacation-ideas",
+			"nav":[{
+				"navtype":"link",
+				"navlabel":"Adventure Travel",
+				"navurl":"/vacation-ideas/adventure"
+			},{
+				"navtype":"link",
+				"navlabel":"Beach Vacations",
+				"navurl":"/vacation-ideas/beach"
+			},{
+				"navtype":"link",
+				"navlabel":"Business Travel",
+				"navurl":"/vacation-ideas/business-travel"
+			},{
+				"navtype":"link",
+				"navlabel":"Cruise Vacations",
+				"navurl":"/vacation-ideas/cruise"
+			},{
+				"navtype":"link",
+				"navlabel":"Family Vacations",
+				"navurl":"/vacation-ideas/family"
+			}]
+		},{
+			"navtype":"link",
+			"navlabel":"awards",
+			"navurl":"/travel-awards",
+			"nav":[{
+				"navtype":"link",
+				"navlabel":"World's Best Awards",
+				"navurl":"/worldsbest"
+			},{
+				"navtype":"link",
+				"navlabel":"T+L 500 Best Hotels",
+				"navurl":"/tl500/2013"
+			},{
+				"navtype":"link",
+				"navlabel":"America's Favorite Towns",
+				"navurl":"/americas-favorite-towns"
+			},{
+				"navtype":"link",
+				"navlabel":"America's Favorite Cities",
+				"navurl":"/americas-favorite-cities"
+			},{
+				"navtype":"link",
+				"navlabel":"It List: Best New Hotels",
+				"navurl":"/articles/it-list-the-best-new-hotels-2013"
+			}]
 		},{
 			"navtype":"link",
 			"navlabel":"news",
-			"navurl":"/news",	
+			"navurl":"/news"	
 		},{
 			"navtype":"html",
 			"navlabel":"search",
-			"navhtml":"<form><input type='text'/></form>"	
+			"navhtml":"<a class='search-nav'><form><input type='text'/></form></a>"	
 		}]
 	}
 }
-
-/*
-<ul class="subnav clear" id="destinations-subnav">
-<li id="destinations-us-canada">
-<a href="/travel-guide/us-canada" title="United States + Canada">United States + Canada</a>
-</li>
-<li id="destinations-europe">
-<a href="/travel-guide/europe" title="Europe">Europe</a>
-</li>
-<li id="destinations-caribbean">
-<a href="/travel-guide/caribbean-bermuda-bahamas" title="Caribbean">Caribbean</a>
-</li>
-<li id="destinations-latin-america">
-<a href="/travel-guide/mexico-central-south-america" title="Latin America">Latin America</a>
-</li>
-<li id="destinations-asia">
-<a href="/travel-guide/asia" title="Asia">Asia</a>
-</li>
-<li id="destinations-australia">
-<a href="/travel-guide/australia-new-zealand-south-pacific" title="Australia + South Pacific">Australia + South Pacific</a>
-</li>
-<li id="destinations-africa">
-<a href="/travel-guide/africa-middle-east" title="Africa + Middle East">Africa + Middle East</a>
-</li>
-<li id="destinations-all">
-<a href="/travel-guide" title="All Destinations">All Destinations</a>
-</li>
-</ul>
-*/

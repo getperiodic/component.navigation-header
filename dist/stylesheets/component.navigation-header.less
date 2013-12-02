@@ -33,7 +33,8 @@
 .ha-header-perspective > div {
 	background: #fff;
 	text-align: left;
-	padding: 0 7%;
+	// padding: 0 7%;
+	padding: 0 1%;
 	height: 50%;
 	width: 100%;
 	margin: 0 auto;
@@ -101,6 +102,11 @@
 	-webkit-transition: all 0.5s;
 	-moz-transition: all 0.5s;
 	transition: all 0.5s;
+	max-width: 30%;
+
+	img{
+		max-height: 3em;
+	}
 }
 
 .ha-header h1::before,
@@ -129,6 +135,7 @@
 
 .ha-header nav {
 	height: 100%;
+	max-width: 70%;
 }
 
 .ha-header nav a {
@@ -138,11 +145,21 @@
 	font-weight: 700;
     padding: 0.2em 0.4em;
     margin: 0 0.4em 0;
-    font-size: 0.8em;
+    font-size: 1.2em;
     cursor: pointer;
     color: #e74c3c;
     outline: none;
     text-decoration: none;
+    
+    &.search-nav{
+    	max-width: 8em;
+    	form{
+    		width: 100%;
+    		input[type="text"]{
+    			max-width: 80%;
+    		}
+    	}
+    }
 }
 
 .ha-header nav a:hover {
@@ -153,13 +170,11 @@
     margin-right: 0;
 }
 
-.ha-header .ha-header-front nav a:first-child,
-.ha-header .ha-header-front nav a:last-child {
+.ha-header .ha-header-front nav a.active {
 	border: 2px solid #e74c3c;
 }
 
-.ha-header .ha-header-front nav a:first-child:hover,
-.ha-header .ha-header-front nav a:last-child:hover {
+.ha-header .ha-header-front nav a.active:hover {
 	border: 2px solid #bc3c2f;
 }
 
@@ -364,7 +379,8 @@
 
 	.ha-header h1 {
 		padding: 10px 0;
-		height: 60%;
+		height: 75%;
+		max-width: 100%;
 	}
 
 	.ha-header .ha-header-bottom nav {
@@ -374,6 +390,7 @@
 	.ha-header nav {
 		display: block;
 		height: auto;
+		max-width: 100%;
 	}
 
 }
