@@ -1,37 +1,52 @@
-<div id="<%= config.html.dom_id %>" class="<%= config.html.dom_id %> p_c_fws-slideshow <% if(config.html.preview===true){%> p_c_fws-slideshow-preview <%}%>">
-	<% 
-	if(config.html.preview===true){ %>
-		<ul>
-		<% for(x in content){ %>
-			<li id="<%= config.html.dom_id %>-li-<%= x %>" class="p_c_fws-slideshow-li <%= config.html.dom_id %> ">
-				<article>
-					<h2><%=content[x].title%></h2>
-					<figure><%-content[x].media%></figure>
-				</article>
-			</li>
-			<%
-		}%>
-		</ul>
-	<%} 
-	else{ %>
-		<header><%= config.html.dom_title %></header>
-		<ul>
-		<% for(x in content){ %>
-			<li id="<%= config.html.dom_id %>-li-<%= x %>" class="p_c_fws-slideshow-li <%= config.html.dom_id %>">
-				<article>
-					<h2><%=content[x].title%></h2>
-					<figure><%-content[x].media%></figure>
-					<p class="small"><%=content[x].dek%><p>
-					<div class="article-meta">
-						<time><%=content[x].date%></time>
-						<small><%=content[x].author%></small>
-						<small><%=content[x].byline%></small>
-					</div>
-					<section><%-content[x].content%></section>
-				</article>
-			</li>
-			<%
-		}%>
-		</ul>
-	<%}%>
-</div>
+<% 
+var startheader = (config.html.dom_init_class) ? config.html.dom_init_class : "ha-header-show" ;
+var subnavhtml='';
+
+function generateLinkHtml(obj,x,recrusive){
+	var returnHtml='';
+	if(obj.navtype==="link"){
+		returnHtml+="<a href='"+obj.navurl+"'>"+obj.navlabel+"</a>";
+	}
+	else if(obj.navtype==="html"){
+		returnHtml+=obj.navhtml;
+	}
+	if(obj.nav && recrusive){
+		generateSubLinkHtml(obj.nav,x);
+	}
+	return returnHtml;
+}
+
+function generateSubLinkHtml(obj,x){
+	var hidenav = (x>0) ? 'style="display:none;"': '';
+	var returnSubHtml ="<nav data-itr='"+x+"' "+hidenav+" >";
+
+	for(y in obj){
+		returnSubHtml+=generateLinkHtml(obj[y],y,false);
+	}
+
+	returnSubHtml+="</nav>";
+	subnavhtml+= returnSubHtml;
+}
+
+%>
+<header id="<%= config.html.dom_id %>" class="ha-header <%= startheader %>">
+	<div class="ha-header-perspective">
+		<div class="ha-header-front">
+			<h1>
+				<% var headerhtml = generateLinkHtml(content.heading); %>
+				<%- headerhtml %>
+			</h1>
+			<nav>
+				<% for(x in content.nav){
+					var navobjlink = generateLinkHtml(content.nav[x],x,true);
+					%>
+					<%- navobjlink %>
+					<%
+				}%>
+			</nav>
+		</div>
+		<div class="ha-header-bottom">
+			<%- subnavhtml %>
+		</div>
+	</div>
+</header>
