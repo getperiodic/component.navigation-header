@@ -26,7 +26,7 @@ window.onload = function(){
 		var data = results.componentData;
 		webapp.render( results.template, results.componentData, "header-container");
 		navigationHeader1 = new navigationHeader();
-		navigationHeader1.init({element:data.config.html.dom_id});
+		navigationHeader1.init({element:data.navigationspec.config.html.dom_id});
 		window.navigationHeader1 = navigationHeader1;
 
 		// var data2 = results.componentData;

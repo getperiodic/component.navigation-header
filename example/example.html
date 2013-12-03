@@ -92,7 +92,10 @@
 		</div>
 
 		<script id="navigation-template" type="javscript/template">
-			<% var startheader = (config.html.dom_init_class) ? config.html.dom_init_class : "ha-header-show" ;
+			<% 
+				config = navigationspec.config;
+				content = navigationspec.content;
+				var startheader = (config.html.dom_init_class) ? config.html.dom_init_class : "ha-header-show" ;
 				var subnavhtml='';
 
 			function generateLinkHtml(obj,x,recrusive){

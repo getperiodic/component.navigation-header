@@ -1,99 +1,101 @@
 {
-	"config":{
-		"html":{
-			"dom_init_class":"ha-header-rotateBack",
-			"dom_id":"ha-header"
-		}
-	},
-	"content":{
-		"heading":{
-			"navtype":"html",
-			"navlabel":"Travel + Leisure",
-			"navhtml":"<a href='/'><img src='https://gpsampledata.s3.amazonaws.com/component.navigation-header/tl-lg.png'/></a>"
+	"navigationspec":{
+		"config":{
+			"html":{
+				"dom_init_class":"ha-header-rotateBack",
+				"dom_id":"ha-header"
+			}
 		},
-		"nav":[{
-			"navtype":"link",
-			"navlabel":"guides",
-			"navurl":"/travel-guide",
+		"content":{
+			"heading":{
+				"navtype":"html",
+				"navlabel":"Travel + Leisure",
+				"navhtml":"<a href='/'><img src='https://gpsampledata.s3.amazonaws.com/component.navigation-header/tl-lg.png'/></a>"
+			},
 			"nav":[{
 				"navtype":"link",
-				"navlabel":"US + Canada",
-				"navurl":"/travel-guide/us-canada"
+				"navlabel":"guides",
+				"navurl":"/travel-guide",
+				"nav":[{
+					"navtype":"link",
+					"navlabel":"US + Canada",
+					"navurl":"/travel-guide/us-canada"
+				},{
+					"navtype":"link",
+					"navlabel":"Europe",
+					"navurl":"/travel-guide/espn"
+				},{
+					"navtype":"link",
+					"navlabel":"Caribbean",
+					"navurl":"/travel-guide/caribbean"
+				},{
+					"navtype":"link",
+					"navlabel":"Asia",
+					"navurl":"/travel-guide/asia"
+				}]
 			},{
 				"navtype":"link",
-				"navlabel":"Europe",
-				"navurl":"/travel-guide/espn"
+				"navlabel":"cruises",
+				"navurl":"/cruises"	
 			},{
 				"navtype":"link",
-				"navlabel":"Caribbean",
-				"navurl":"/travel-guide/caribbean"
+				"navlabel":"ideas",
+				"navurl":"/vacation-ideas",
+				"nav":[{
+					"navtype":"link",
+					"navlabel":"Adventure Travel",
+					"navurl":"/vacation-ideas/adventure"
+				},{
+					"navtype":"link",
+					"navlabel":"Beach Vacations",
+					"navurl":"/vacation-ideas/beach"
+				},{
+					"navtype":"link",
+					"navlabel":"Business Travel",
+					"navurl":"/vacation-ideas/business-travel"
+				},{
+					"navtype":"link",
+					"navlabel":"Cruise Vacations",
+					"navurl":"/vacation-ideas/cruise"
+				},{
+					"navtype":"link",
+					"navlabel":"Family Vacations",
+					"navurl":"/vacation-ideas/family"
+				}]
 			},{
 				"navtype":"link",
-				"navlabel":"Asia",
-				"navurl":"/travel-guide/asia"
+				"navlabel":"awards",
+				"navurl":"/travel-awards",
+				"nav":[{
+					"navtype":"link",
+					"navlabel":"World's Best Awards",
+					"navurl":"/worldsbest"
+				},{
+					"navtype":"link",
+					"navlabel":"T+L 500 Best Hotels",
+					"navurl":"/tl500/2013"
+				},{
+					"navtype":"link",
+					"navlabel":"America's Favorite Towns",
+					"navurl":"/americas-favorite-towns"
+				},{
+					"navtype":"link",
+					"navlabel":"America's Favorite Cities",
+					"navurl":"/americas-favorite-cities"
+				},{
+					"navtype":"link",
+					"navlabel":"It List: Best New Hotels",
+					"navurl":"/articles/it-list-the-best-new-hotels-2013"
+				}]
+			},{
+				"navtype":"link",
+				"navlabel":"news",
+				"navurl":"/news"	
+			},{
+				"navtype":"html",
+				"navlabel":"search",
+				"navhtml":"<a class='search-nav'><form><input type='text'/></form></a>"	
 			}]
-		},{
-			"navtype":"link",
-			"navlabel":"cruises",
-			"navurl":"/cruises"	
-		},{
-			"navtype":"link",
-			"navlabel":"ideas",
-			"navurl":"/vacation-ideas",
-			"nav":[{
-				"navtype":"link",
-				"navlabel":"Adventure Travel",
-				"navurl":"/vacation-ideas/adventure"
-			},{
-				"navtype":"link",
-				"navlabel":"Beach Vacations",
-				"navurl":"/vacation-ideas/beach"
-			},{
-				"navtype":"link",
-				"navlabel":"Business Travel",
-				"navurl":"/vacation-ideas/business-travel"
-			},{
-				"navtype":"link",
-				"navlabel":"Cruise Vacations",
-				"navurl":"/vacation-ideas/cruise"
-			},{
-				"navtype":"link",
-				"navlabel":"Family Vacations",
-				"navurl":"/vacation-ideas/family"
-			}]
-		},{
-			"navtype":"link",
-			"navlabel":"awards",
-			"navurl":"/travel-awards",
-			"nav":[{
-				"navtype":"link",
-				"navlabel":"World's Best Awards",
-				"navurl":"/worldsbest"
-			},{
-				"navtype":"link",
-				"navlabel":"T+L 500 Best Hotels",
-				"navurl":"/tl500/2013"
-			},{
-				"navtype":"link",
-				"navlabel":"America's Favorite Towns",
-				"navurl":"/americas-favorite-towns"
-			},{
-				"navtype":"link",
-				"navlabel":"America's Favorite Cities",
-				"navurl":"/americas-favorite-cities"
-			},{
-				"navtype":"link",
-				"navlabel":"It List: Best New Hotels",
-				"navurl":"/articles/it-list-the-best-new-hotels-2013"
-			}]
-		},{
-			"navtype":"link",
-			"navlabel":"news",
-			"navurl":"/news"	
-		},{
-			"navtype":"html",
-			"navlabel":"search",
-			"navhtml":"<a class='search-nav'><form><input type='text'/></form></a>"	
-		}]
+		}
 	}
 }
